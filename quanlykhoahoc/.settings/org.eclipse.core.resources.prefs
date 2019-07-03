@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/tranuyen/DAO/ThongkeDAO.java=UTF-8
+encoding//src/main/java/com/tranuyen/controller/Dangky.java=UTF-8
+encoding//src/main/java/com/tranuyen/controller/Login.java=UTF-8
+encoding//src/main/java/com/tranuyen/controller/Thongke.java=UTF-8
+encoding//src/main/java/com/tranuyen/inteface/ThongKe.java=UTF-8
+encoding//src/main/java/com/tranuyen/service/ThongKeService.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/user/login.jsp=UTF-8

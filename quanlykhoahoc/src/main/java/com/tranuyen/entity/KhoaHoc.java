@@ -2,10 +2,12 @@
 package com.tranuyen.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,29 +38,14 @@ public class KhoaHoc {
 	@JoinColumn( name = "loaiId")
 	private Loai loaiId;
 	
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-	private Set<Khoahoc_Hocvien> khoahochocvien = new HashSet<Khoahoc_Hocvien>();
+	@OneToMany(mappedBy = "idkhoahoc", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<BaiHoc> listbaihoc;
 	
-	public KhoaHoc() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public KhoaHoc(int id, String ten, String thoigian, String chiphi, String email, GiaoVien giaovien, Loai loai) {
-		
-		this.id = id;
-		this.ten = ten;
-		this.thoigian = thoigian;
-		this.chiphi = chiphi;
-		this.idgiaovien = giaovien;
-		this.loaiId = loai;
-	}
-	/*@ManyToMany
-	@JoinTable(name = "khoahoc_hocvien", joinColumns = @JoinColumn(name = "idkhoahoc",referencedColumnName = "id"), 
-	inverseJoinColumns = @JoinColumn(name = "idhocvien",referencedColumnName = "id"))
-	public int getId() {
-		return id;
-	}*/
-
+	@OneToMany(mappedBy = "idkhoahoc", cascade = CascadeType.ALL)
+	private List<Khoahoc_Hocvien> khoahochocvien ;
+	
+	
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -95,14 +82,6 @@ public class KhoaHoc {
 		this.idgiaovien = giaovien;
 	}
 
-	public Loai getLoai() {
-		return loaiId;
-	}
-
-	public void setLoai(Loai loai) {
-		this.loaiId = loai;
-	}
-	
 	public GiaoVien getIdgiaovien() {
 		return idgiaovien;
 	}
@@ -116,6 +95,38 @@ public class KhoaHoc {
 	
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+
+	public Loai getLoaiId() {
+		return loaiId;
+	}
+
+
+	public void setLoaiId(Loai loaiId) {
+		this.loaiId = loaiId;
+	}
+
+
+	
+	public void setListbaihoc(List<BaiHoc> listbaihoc) {
+		this.listbaihoc = listbaihoc;
+	}
+	public List<BaiHoc> getListbaihoc() {
+		return listbaihoc;
+	}
+
+	public void setKhoahochocvien(List<Khoahoc_Hocvien> khoahochocvien) {
+		this.khoahochocvien = khoahochocvien;
+	}
+	
+	public List<Khoahoc_Hocvien> getKhoahochocvien() {
+		return khoahochocvien;
+	}
+
+
+	public int getId() {
+		return id;
 	}
 	
 }

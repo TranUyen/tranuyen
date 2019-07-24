@@ -38,16 +38,6 @@ public class SinhVien {
 	public SinhVien() {
 		
 	}
-	public SinhVien(int id, String hoten, String diachi, String sdt, String ngaysinh, String email, String password,
-			Roles roles) {
-		this.id = id;
-		this.hoten = hoten;
-		this.diachi = diachi;
-		this.sdt = sdt;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
 	
 	@ManyToMany
 	@JoinTable(name = "diemdanh", joinColumns = @JoinColumn(name = "idhocvien",referencedColumnName = "id"), 

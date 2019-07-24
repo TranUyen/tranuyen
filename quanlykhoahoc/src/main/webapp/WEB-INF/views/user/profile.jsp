@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Course | Profile</title>
+    <title>IT-BK | Profile</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="<c:url value ="file/assets/img/favicon.ico"/>" type="image/x-icon">
@@ -100,7 +100,7 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>CourseOnline</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>IT-BK</span></a>
           <!-- IMG BASED LOGO  -->
           <!-- <a class="navbar-brand" href="index.html"><img src="<c:url value ="file/assets/img/logo.png"/>" alt="logo"></a> -->
         </div>
@@ -136,12 +136,27 @@
 	            </li>     
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Chức năng <span class="fa fa-angle-down"></span></a>
+              <c:if test="${not empty sinhvien}">
               <ul class="dropdown-menu" role="menu">
                 <li><a href="hocphi.html">Học phí</a></li>
-                <li><a href="course.html">Khóa học đã hoàn thành</a></li>
+                <li><a href="<c:url value ="/course2"/>">Khóa học đang học</a></li>
               </ul>
-              <li><a href="login">Cá nhân</a></li>
-              <li><a href="login">Đăng xuất</a></li>
+              </c:if>
+              <c:if test="${not empty giaovien}">
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="hocphi.html">Thêm Khóa Học</a></li>
+                <li><a href="<c:url value ="/course3"/>">Khóa học đang dạy</a></li>
+              </ul>
+              </c:if>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cá Nhân <span class="fa fa-angle-down"></span></a>
+	            <ul class="dropdown-menu" role="menu">
+	             <li><a href="<c:url value ="/profile"/>">Profile </a></li>
+	             <li><a href="<c:url value ="/set-profile"/>">Thay đổi thông tin </a></li> 
+              	 <li><a href="<c:url value ="/set-password"/>">Đổi password</a></li>
+              	</ul>
+              </li>
+              <li><a href="<c:url value ="/dang-xuat"/>">Đăng xuất</a></li>
             </li>
             </c:if>
               </ul>               
@@ -203,20 +218,21 @@
                 <div class="mu-contact-left" style ="padding-left: 200px">
                   <form class="contactform">
                                    
-                    <p class="comment-form-author">
+	                    <p class="comment-form-author">
+	                     
+	                      <h3><b>${sinhvien.getHoten()}<b></h3>
+	                    </p>
+                       <p>Email: </p>
+                       <p class="comment-form-email">
                      
-                      <h3><b>${sinhvien.getHoten()}<b></h3>
-                    </p>
-                    <p class="comment-form-email">
-                      <label for="email">Email <span class="required">*</span></label>
                       <p> ${sinhvien.getEmail()}</p>
                     </p>
                     <p class="comment-form-url">
-                      <label for="subject">Địa chỉ</label>
+                      <label for="subject">Địa chỉ:</label>
                       <p>${sinhvien.getDiachi()}</p> 
                     </p>
                     <p class="comment-form-url">
-                      <label for="subject">số điên thoại</label>
+                      <label for="subject">Số điên thoại:</label>
                       <p>${sinhvien.getSdt()}</p>
                     </p>
                   </form>

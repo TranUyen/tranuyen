@@ -1956,7 +1956,7 @@ pre code {
     width: 58.33333333%;
   }
   .col-md-6 {
-    width: 50%;
+    width: 33%;
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -4711,6 +4711,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > .active {
   color: #777;
 }
+
 .pagination {
   display: inline-block;
   padding-left: 0;
@@ -4752,18 +4753,20 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   background-color: #eee;
   border-color: #ddd;
 }
+.active,
 .pagination > .active > a,
 .pagination > .active > span,
 .pagination > .active > a:hover,
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  z-index: 3;
-  color: #fff;
-  cursor: default;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  z-index: 3!important;
+  color: #fff!important; 
+  cursor: default!important;
+  background-color: #337ab7!important;
+  border-color: #337ab7!important;
 }
+
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,
 .pagination > .disabled > span:focus,

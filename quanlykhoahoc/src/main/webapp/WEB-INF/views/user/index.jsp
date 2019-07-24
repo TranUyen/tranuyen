@@ -7,24 +7,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>CourseOnline | Home</title>
+    <title>IT-BK | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="file/assets/img/favicon.ico"/>" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="/file/assets/img/favicon.ico"/>" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="<c:url value="file/assets/css/font-awesome.css"/>" rel="stylesheet">
+    <link href="<c:url value="/file/assets/css/font-awesome.css"/>" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="<c:url value = "file/assets/css/bootstrap.css"/>" rel="stylesheet">   
+    <link href="<c:url value = "/file/assets/css/bootstrap.css"/>" rel="stylesheet">   
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="<c:url value = "file/assets/css/slick.css"/>">          
+    <link rel="stylesheet" type="text/css" href="<c:url value = "/file/assets/css/slick.css"/>">          
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="<c:url value = "file/assets/css/jquery.fancybox.css"/>" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="<c:url value = "/file/assets/css/jquery.fancybox.css"/>" type="text/css" media="screen" /> 
     <!-- Theme color -->
-    <link id="switcher" href="<c:url value = "file/assets/css/theme-color/default-theme.css"/>" rel="stylesheet">          
+    <link id="switcher" href="<c:url value = "/file/assets/css/theme-color/default-theme.css"/>" rel="stylesheet">          
 
     <!-- Main style sheet -->
-    <link href="<c:url value ="file/assets/css/style.css"/>" rel="stylesheet">    
+    <link href="<c:url value ="/file/assets/css/style.css"/>" rel="stylesheet">    
 
    
     <!-- Google Fonts -->
@@ -101,7 +101,7 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>CourseOnline</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>IT-BK</span></a>
           <!-- IMG BASED LOGO  -->
           <!-- <a class="navbar-brand" href="index.html"><img src="<c:url value ="file/assets/img/logo.png"/>" alt="logo"></a> -->
         </div>
@@ -112,7 +112,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Courses <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
-              	<li><a href="course">Tất cả khóa học </a></li>
+              	<li><a href="<c:url value ="/course/0"/>">Tất cả khóa học </a></li>
                 <li><a href="<c:url value ="/course/1"/>">Seminar </a></li>                
                 <li><a href="<c:url value ="/course/2"/>">Đào tạo nội bộ</a></li>
                 <li><a href="<c:url value ="/course/3"/>">Đào tạo bên ngoài</a></li>                
@@ -120,16 +120,16 @@
             </li> 
             <li><a href="">Contact</a></li>
 			<li><a href="<c:url value ="/login"/>">Đăng Nhập</a></li>
-            <li><a href="<c:url value ="dang-ky"/>">Đăng Ký</a></li>
-          </c:if> 
+            <li><a href="<c:url value ="/dang-ky"/>">Đăng Ký</a></li>
+          </c:if>
           <c:if test = "${not empty sinhvien || not empty giaovien}">
 	          <div id="navbar" class="navbar-collapse collapse">
 	          <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-	            <li class="active"><a href="index">Home </a></li>            
+	            <li class="active"><a href="<c:url value ="/index"/>">Home </a></li>            
 	            <li class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Courses <span class="fa fa-angle-down"></span></a>
 	              <ul class="dropdown-menu" role="menu">
-	              	<li><a href="course">Tất cả khóa học </a></li>
+	              	<li><a href="<c:url value ="/course/0"/>">Tất cả khóa học </a></li>
 	                <li><a href="<c:url value ="/course/1"/>">Seminar </a></li>                
 	                <li><a href="<c:url value ="/course/2"/>">Đào tạo nội bộ</a></li>
 	                <li><a href="<c:url value ="/course/3"/>">Đào tạo bên ngoài</a></li>                
@@ -137,14 +137,31 @@
 	            </li>     
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Chức năng <span class="fa fa-angle-down"></span></a>
+              <c:if test="${not empty sinhvien}">
               <ul class="dropdown-menu" role="menu">
                 <li><a href="hocphi.html">Học phí</a></li>
                 <li><a href="<c:url value ="/course2"/>">Khóa học đang học</a></li>
               </ul>
-              <li><a href="<c:url value ="/profile"/>">Cá nhân</a></li>
-              <li><a href="<c:url value ="/login"/>">Đăng xuất</a></li>
+              </c:if>
+              <c:if test="${not empty giaovien}">
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="hocphi.html">Thêm Khóa Học</a></li>
+                <li><a href="<c:url value ="/course3"/>">Khóa học đang dạy</a></li>
+              </ul>
+              </c:if>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cá Nhân <span class="fa fa-angle-down"></span></a>
+	            <ul class="dropdown-menu" role="menu">
+	             <li><a href="<c:url value ="/profile"/>">Profile </a></li>
+	             <li><a href="<c:url value ="/set-profile"/>">Thay đổi thông tin </a></li> 
+              	 <li><a href="<c:url value ="/set-password"/>">Đổi password</a></li>
+              	</ul>
+              </li>
+              <li><a href="<c:url value ="/dang-xuat"/>">Đăng xuất</a></li>
             </li>
-            </c:if>
+            </c:if> 
+         
+          
               </ul>               
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     
@@ -175,7 +192,7 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-          <img src="<c:url value ="file/assets/img/slider/4.jpg"/>" alt="img">
+          <img src="<c:url value ="https://png.pngtree.com/thumb_back/fw800/back_pic/05/07/94/815979815bbd6f4.jpg"/>" alt="img">
         </figure>
       </div>
       <div class="mu-slider-content">
@@ -191,7 +208,7 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-           <img src="<c:url value ="file/assets/img/slider/4.jpg"/>" alt="img">
+           <img src="<c:url value ="https://img.heypik.com/background-image/20190122/psd-sale-banner-background-heypik-6QU441Q.jpg?x-oss-process=image/quality,q_70/watermark,image_c2h1aXlpbl9uZXcucG5n,g_center"/>" alt="img">
         </figure>
       </div>
       <div class="mu-slider-content">
@@ -207,7 +224,7 @@
     <div class="mu-slider-single">
       <div class="mu-slider-img">
         <figure>
-           <img src="<c:url value ="file/assets/img/slider/4.jpg"/>" alt="img">
+           <img src="<c:url value ="https://png.pngtree.com/back_origin_pic/04/57/07/a4ce785e9719c2ba291d35e3cf3cc4c0.jpg"/>" alt="img">
         </figure>
       </div>
       <div class="mu-slider-content">
@@ -230,21 +247,21 @@
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-book"></span>
-              <h3>Learn Online</h3>
+              <h3>Học Tập Online</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
             </div>
             <!-- Start single service -->
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-users"></span>
-              <h3>Expert Teachers</h3>
+              <h3>Đội ngũ giáo viên chuyên nghiệp</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
             </div>
             <!-- Start single service -->
             <!-- Start single service -->
             <div class="mu-service-single">
               <span class="fa fa-table"></span>
-              <h3>Best Classrooms</h3>
+              <h3>Lớp học tốt nhất</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima officiis, deleniti dolorem exercitationem praesentium, est!</p>
             </div>
             <!-- Start single service -->
@@ -309,215 +326,7 @@
   </section>
   <!-- End about us counter -->
 
-  <!-- Start features section -->
-  <section id="mu-features">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <div class="mu-features-area">
-            <!-- Start Title -->
-            <div class="mu-title">
-              <h2>Our Features</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-            </div>
-            <!-- End Title -->
-            <!-- Start features content -->
-            <div class="mu-features-content">
-              <div class="row">
-                <div class="col-lg-4 col-md-4  col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-book"></span>
-                    <h4>Professional Courses</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-users"></span>
-                    <h4>Expert Teachers</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-laptop"></span>
-                    <h4>Online Learning</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-microphone"></span>
-                    <h4>Audio Lessons</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-film"></span>
-                    <h4>Video Lessons</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-single-feature">
-                    <span class="fa fa-certificate"></span>
-                    <h4>Professional Certificate</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum.</p>
-                    <a href="#">Read More</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End features content -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End features section -->
-
-  <!-- Start latest course section -->
-  <section id="mu-latest-courses">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <div class="mu-latest-courses-area">
-            <!-- Start Title -->
-            <div class="mu-title">
-              <h2>Latest Courses</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ipsa ea maxime mollitia, vitae voluptates, quod at, saepe reprehenderit totam aliquam architecto fugiat sunt animi!</p>
-            </div>
-            <!-- End Title -->
-            <!-- Start latest course content -->
-            <div id="mu-latest-course-slide" class="mu-latest-courses-content">
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/1.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Drawing</a>
-                      <span><i class="fa fa-clock-o"></i>90Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/2.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Engineering </a>
-                      <span><i class="fa fa-clock-o"></i>75Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/3.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Academic</a>
-                      <span><i class="fa fa-clock-o"></i>45Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/1.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Drawing</a>
-                      <span><i class="fa fa-clock-o"></i>90Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/2.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Engineering </a>
-                      <span><i class="fa fa-clock-o"></i>75Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="mu-latest-course-single">
-                  <figure class="mu-latest-course-img">
-                    <a href="#"><img src="<c:url value = "file/assets/img/courses/3.jpg"/>" alt="img"></a>
-                    <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Academic</a>
-                      <span><i class="fa fa-clock-o"></i>45Days</span>
-                    </figcaption>
-                  </figure>
-                  <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                    <div class="mu-latest-course-single-contbottom">
-                      <a class="mu-course-details" href="#">Details</a>
-                      <span class="mu-course-price" href="#">$165.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End latest course content -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End latest course section -->
+ 
 
   <!-- Start our teacher -->
   <section id="mu-our-teacher">
@@ -537,7 +346,7 @@
                 <div class="col-lg-3 col-md-3  col-sm-6">
                   <div class="mu-our-teacher-single">
                     <figure class="mu-our-teacher-img">
-                      <img src="<c:url value = "file/assets/img/teachers/teacher-01.png"/>" alt="teacher img">
+                      <img src="<c:url value = "https://images.tuyensinh247.com/picture/learning/teacher_ava/origin/14_1535772575.png"/>" alt="teacher img">
                       <div class="mu-our-teacher-social">
                         <a href="#"><span class="fa fa-facebook"></span></a>
                         <a href="#"><span class="fa fa-twitter"></span></a>
@@ -548,14 +357,14 @@
                     <div class="mu-ourteacher-single-content">
                       <h4>Brian Dean</h4>
                       <span>Math Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                     
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <div class="mu-our-teacher-single">
                     <figure class="mu-our-teacher-img">
-                      <img src="<c:url value = "file/assets/img/teachers/teacher-02.png"/>" alt="teacher img">
+                      <img src="<c:url value = "https://images.tuyensinh247.com/picture/learning/teacher_ava/origin/15_1559633649.png"/>" alt="teacher img">
                       <div class="mu-our-teacher-social">
                         <a href="#"><span class="fa fa-facebook"></span></a>
                         <a href="#"><span class="fa fa-twitter"></span></a>
@@ -573,7 +382,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <div class="mu-our-teacher-single">
                     <figure class="mu-our-teacher-img">
-                      <img src="<c:url value = "file/assets/img/teachers/teacher-03.png"/>" alt="teacher img">
+                      <img src="<c:url value = "https://images.tuyensinh247.com/picture/learning/teacher_ava/origin/35_1535342164.png"/>" alt="teacher img">
                       <div class="mu-our-teacher-social">
                         <a href="#"><span class="fa fa-facebook"></span></a>
                         <a href="#"><span class="fa fa-twitter"></span></a>
@@ -584,14 +393,14 @@
                     <div class="mu-ourteacher-single-content">
                       <h4>Rebeca Michel</h4>
                       <span>English Teacher</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique quod pariatur recusandae odio dignissimos. Eligendi.</p>
+                      
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                   <div class="mu-our-teacher-single">
                     <figure class="mu-our-teacher-img">
-                      <img src="<c:url value = "file/assets/img/teachers/teacher-04.png"/>" alt="teacher img">
+                      <img src="<c:url value = "https://images.tuyensinh247.com/picture/learning/teacher_ava/origin/44_1535342219.png"/>" alt="teacher img">
                       <div class="mu-our-teacher-social">
                         <a href="#"><span class="fa fa-facebook"></span></a>
                         <a href="#"><span class="fa fa-twitter"></span></a>

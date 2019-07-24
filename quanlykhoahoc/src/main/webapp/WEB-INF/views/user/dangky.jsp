@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Elegant Login Form Flat Responsive Widget Template :: w3layouts</title>
+  <title>IT-BK đăng ký</title>
  <!-- custom-theme -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,23 +17,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="<c:url value ="file/css1/font-awesome.css"/>" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
 <div class="login-form w3_form">
   <!--  Title-->
       <div class="login-title w3_title">
-           <h1>Welcom to CourseOnline</h1>
+           <h1>Đăng Ký để tham gia học tập</h1>
       </div>
            <div class="login w3_login">
                 <h2 class="login-header w3_header">Đăng ký</h2>
 				    <div class="w3l_grid">
-                        <form class="login-container" action="dang-ky" method="post">
-                        	 <input type="text" placeholder="hoten" Name="hoten" required="" >
-                        	 <input type="text" placeholder="diachi" Name="diachi" required="" >
-                             <input type="email" placeholder="Email" Name="email" required="" >
-                             <input type="text" placeholder="sdt" Name="sdt" required="" >
-                             <input type="password" placeholder="password" Name="password" required="">
-                             <input type="submit" value="Submit">
+                        <form class="login-container">
+                        	
+                        	 <input type="text" id="hoten" placeholder="hoten" Name="hoten" required="" >
+                        	 <input type="text" id="diachi" placeholder="diachi" Name="diachi" required="" >
+                             <input type="email" id="email" placeholder="Email" Name="email" required="" >
+                             <input type="text" id = "sdt" placeholder="sdt" Name="sdt" required="" >
+                             <input type="password" id = "password" placeholder="password" Name="password" required="">
+                             <input type="button" id="btn_submit" value="Submit" style="width: 350px; height: 40px" >
                         </form>
 <div class="second-section w3_section">
      <div class="bottom-header w3_bottom">
@@ -70,5 +72,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="footer-w3l">
 		<p class="agile"> &copy; 2017 Elegant Login Form . All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 </div>
+
+	
+ <script src="<c:url value = "file/assets/js/jquery.dangky.js"/>"></script> 
 </body>
 </html>

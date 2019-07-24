@@ -6,13 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tranuyen.entity.GiaoVien;
-import com.tranuyen.entity.SinhVien;
 import com.tranuyen.service.DangnhapService;
 
 @Controller
@@ -22,38 +19,58 @@ public class Login{
 	@Autowired
 	DangnhapService dn;
 	
-	@GetMapping
-	public String DangKy() {
-		return "login";
-	}
-	@PostMapping()
-	public String checkLogin(@RequestParam String email, @RequestParam String password, HttpSession session1,HttpSession session2,HttpSession session3, Model model) {
+	
+	@GetMapping("/check")
+	@ResponseBody
+	public String checkLogin(@RequestParam String email, @RequestParam String password,@RequestParam int roleId, HttpSession session, Model model) {
 		model.addAttribute("email", email);
 		model.addAttribute("password", password);
+		System.out.println(email);
+		String pw = dn.Md5(password);
+		model.addAttribute("roleId", roleId);
 		
-		if(dn.CheckLogInSV(password, email)) {
-			session1.setAttribute("sinhvien", dn.ThongtinSV(email));
-			SinhVien sv = (SinhVien) session1.getAttribute("sinhvien");
-			return "redirect:/";
-		}else if(dn.CheckLogInGV(password, email)) {
-			session2.setAttribute("giaovien", dn.ThongtinGV(email));
-			GiaoVien gv = (GiaoVien) session2.getAttribute("giaovien");
-			return "redirect:/";
-		}else 
-			return "login";
-			
+		try {
+			if(roleId == 2) {
+				if(dn.CheckLogInSV(pw, email)) {
+					session.setAttribute("sinhvien", dn.ThongtinSV(email));
+					model.addAttribute("sinhvien", dn.ThongtinSV(email));
+					System.out.println(dn.ThongtinSV(email));
+					return "OK";
+				}
+			}
+			if(roleId == 3) {
+			 if(dn.CheckLogInGV(pw, email)) {
+				session.setAttribute("giaovien", dn.ThongtinGV(email));
+				model.addAttribute("giaovien", dn.ThongtinSV(email));
+
+				return "OK";
+			     }
+			 }
+			if(roleId == 1) {
+				 if(dn.CheckLogInAd(pw, email)) {
+					session.setAttribute("admin", dn.ThongtinAd(email));
+					model.addAttribute("admin", dn.ThongtinAd(email));
+					return "admin";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "error";
 		
 	}
 	
 	
-	@GetMapping("/")
+	@GetMapping
 	public String homeIndex() {
-		return "index";
+		return "login";
 	}
 	
 	@GetMapping("/dangky")
 	public String Dangky() {
 		return "dangky";
 	}
+	
 	
 }

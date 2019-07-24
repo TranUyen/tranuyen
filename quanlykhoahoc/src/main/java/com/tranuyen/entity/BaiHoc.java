@@ -23,20 +23,8 @@ public class BaiHoc {
 	
 	@ManyToOne
 	@JoinColumn(name = "idkhoahoc")
-	private KhoaHoc khoahoc;
+	private KhoaHoc idkhoahoc;
 
-	public BaiHoc(int id, String name, String tgbatdau, String tgketthuc, KhoaHoc khoahoc) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.tgbatdau = tgbatdau;
-		this.tgketthuc = tgketthuc;
-		this.khoahoc = khoahoc;
-	}
-	
-	@ManyToMany
-	@JoinTable(name = "diemdanh", joinColumns = @JoinColumn(name = "idbaihoc",referencedColumnName = "id"), 
-	inverseJoinColumns = @JoinColumn(name = "idhocvien",referencedColumnName = "id"))
 	
 	
 	public int getId() {
@@ -71,13 +59,18 @@ public class BaiHoc {
 		this.tgketthuc = tgketthuc;
 	}
 
-	public KhoaHoc getKhoahoc() {
-		return khoahoc;
+
+
+	public KhoaHoc getIdkhoahoc() {
+		return idkhoahoc;
 	}
 
-	public void setKhoahoc(KhoaHoc khoahoc) {
-		this.khoahoc = khoahoc;
+
+
+	public void setIdkhoahoc(KhoaHoc idkhoahoc) {
+		this.idkhoahoc = idkhoahoc;
 	}
+
 	
 	
 }

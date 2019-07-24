@@ -1,27 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Varsity | 404</title>
+    <title>CourseOnline | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="file/assets/img/favicon.ico"/>" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="<c:url value="/file/assets/css/font-awesome.css"/>" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">   
+    <link href="<c:url value = "/file/assets/css/bootstrap.css"/>" rel="stylesheet">   
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">          
+    <link rel="stylesheet" type="text/css" href="<c:url value = "/file/assets/css/slick.css"/>">          
     <!-- Fancybox slider -->
-    <link rel="stylesheet" href="assets/css/jquery.fancybox.css" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="<c:url value = "/file/assets/css/jquery.fancybox.css"/>" type="text/css" media="screen" /> 
     <!-- Theme color -->
-    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">  
+    <link id="switcher" href="<c:url value = "/file/assets/css/theme-color/default-theme.css"/>" rel="stylesheet">          
 
     <!-- Main style sheet -->
-    <link href="assets/css/style.css" rel="stylesheet">    
+    <link href="<c:url value ="/file/assets/css/style.css"/>" rel="stylesheet">    
 
    
     <!-- Google Fonts -->
@@ -37,8 +40,8 @@
     <![endif]-->
 
   </head>
-  <body>
-  
+  <body> 
+
   <!--START SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#">
       <i class="fa fa-angle-up"></i>      
@@ -98,30 +101,61 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>Varsity</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>CourseOnline</span></a>
           <!-- IMG BASED LOGO  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
+          <!-- <a class="navbar-brand" href="index.html"><img src="<c:url value ="file/assets/img/logo.png"/>" alt="logo"></a> -->
         </div>
+        <c:if test = "${empty sinhvien && empty giaovien}">
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li><a href="index.html">Home</a></li>            
+            <li class="active"><a href="index">Home </a></li>            
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <span class="fa fa-angle-down"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Courses <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="course.html">Course Archive</a></li>                
-                <li><a href="course-detail.html">Course Detail</a></li>                
+              	<li><a href="course">Tất cả khóa học </a></li>
+                <li><a href="<c:url value ="/course/1"/>">Seminar </a></li>                
+                <li><a href="<c:url value ="/course/2"/>">Đào tạo nội bộ</a></li>
+                <li><a href="<c:url value ="/course/3"/>">Đào tạo bên ngoài</a></li>                
               </ul>
-            </li>           
-            <li><a href="gallery.html">Gallery</a></li>
+            </li> 
+            <li><a href="">Contact</a></li>
+			<li><a href="<c:url value ="/login"/>">Đăng Nhập</a></li>
+            <li><a href="<c:url value ="/dang-ky"/>">Đăng Ký</a></li>
+          </c:if>
+          <c:if test = "${not empty sinhvien || not empty giaovien}">
+	          <div id="navbar" class="navbar-collapse collapse">
+	          <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+	            <li class="active"><a href="<c:url value ="/index"/>">Home </a></li>            
+	            <li class="dropdown">
+	              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Courses <span class="fa fa-angle-down"></span></a>
+	              <ul class="dropdown-menu" role="menu">
+	              	<li><a href="course">Tất cả khóa học </a></li>
+	                <li><a href="<c:url value ="/course/1"/>">Seminar </a></li>                
+	                <li><a href="<c:url value ="/course/2"/>">Đào tạo nội bộ</a></li>
+	                <li><a href="<c:url value ="/course/3"/>">Đào tạo bên ngoài</a></li>                
+	              </ul>
+	            </li>     
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="fa fa-angle-down"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Chức năng <span class="fa fa-angle-down"></span></a>
+              <c:if test="${not empty sinhvien}">
               <ul class="dropdown-menu" role="menu">
-                <li><a href="blog-archive.html">Blog Archive</a></li>                
-                <li><a href="blog-single.html">Blog Single</a></li>                
+                <li><a href="hocphi.html">Học phí</a></li>
+                <li><a href="<c:url value ="/course2"/>">Khóa học đang học</a></li>
               </ul>
-            </li>            
-            <li><a href="contact.html">Contact</a></li>
-            <li class="active"><a href="404.html">404 Page</a></li>               
+              </c:if>
+              <c:if test="${not empty giaovien}">
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="hocphi.html">Thêm Khóa Học</a></li>
+                <li><a href="<c:url value ="/course3"/>">Khóa học đang dạy</a></li>
+              </ul>
+              </c:if>
+              <li><a href="<c:url value ="/profile"/>">Cá nhân</a></li>
+              <li><a href="<c:url value ="/dang-xuat"/>">Đăng xuất</a></li>
+            </li>
+            </c:if> 
+         
+          
+              </ul>               
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     
         </div><!--/.nav-collapse -->        
@@ -172,7 +206,7 @@
             <p>Oops! The page you requested was not found!</p>
             <span>The page you are looking for is not available or has been removed or changed.</span>
             <h2>404</h2>
-            <a class="mu-post-btn" href="index.html">GO TO HOME</a>
+            <a class="mu-post-btn" href="<c:url value = "/index"/>">GO TO HOME</a>
           </div>
         </div>
       </div>
@@ -257,21 +291,21 @@
 
   
   <!-- jQuery library -->
-  <script src="assets/js/jquery.min.js"></script>  
+  <script src="<c:url value="/file/assets/js/jquery.min.js"/>"></script>  
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="assets/js/bootstrap.js"></script>   
+  <script src="<c:url value="/file/assets/js/bootstrap.js"/>"></script>   
   <!-- Slick slider -->
-  <script type="text/javascript" src="assets/js/slick.js"></script>
+  <script type="text/javascript" src="<c:url value="/file/assets/js/slick.js"/>"></script>
   <!-- Counter -->
-  <script type="text/javascript" src="assets/js/waypoints.js"></script>
-  <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>  
+  <script type="text/javascript" src="<c:url value="/file/assets/js/waypoints.js"/>"></script>
+  <script type="text/javascript" src="<c:url value="/file/assets/js/jquery.counterup.js"/>"></script>  
   <!-- Mixit slider -->
-  <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
+  <script type="text/javascript" src="<c:url value="/file/assets/js/jquery.mixitup.js"/>"></script>
   <!-- Add fancyBox -->        
-  <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="<c:url value="/file/assets/js/jquery.fancybox.pack.js"/>"></script>
 
   <!-- Custom js -->
-  <script src="assets/js/custom.js"></script> 
+  <script src="<c:url value="/file/assets/js/custom.js"/>"></script> 
 
   </body>
 </html>

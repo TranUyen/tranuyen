@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tranuyen.DAO.KhoahocDanghocDAO;
 import com.tranuyen.entity.KhoaHoc;
 import com.tranuyen.entity.Khoahoc_Hocvien;
+import com.tranuyen.implDAO.KhoahocDanghocDAO;
 
 @Service
 public class KhoahocdanghocService {

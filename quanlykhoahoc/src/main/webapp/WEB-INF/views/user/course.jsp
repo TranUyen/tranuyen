@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>OnlineCourse | Course</title>
+    <title>IT-BK | Course</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="<c:url value ="/file/assets/img/favicon.ico"/>" type="image/x-icon">
@@ -88,7 +88,7 @@
     </div>
   </header>
   <!-- End header  -->
-  <!-- Start menu -->
+ 
  <!-- Start menu -->
   <section id="mu-menu">
     <nav class="navbar navbar-default" role="navigation">  
@@ -103,14 +103,14 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>CourseOnline</span></a>
+          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>IT-BK</span></a>
           <!-- IMG BASED LOGO  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="<c:url value ="file/assets/img/logo.png"/>" alt="logo"></a> -->
+          <!-- <a class="navbar-brand" href="<c:url value ="/index"/>"><img src="<c:url value ="file/assets/img/logo.png"/>" alt="logo"></a> -->
         </div>
         <c:if test = "${empty sinhvien && empty giaovien}">
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li class="active"><a href="index">Home </a></li>            
+            <li class="active"><a href="<c:url value ="/index"/>">Home </a></li>            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Courses <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -139,12 +139,27 @@
 	            </li>     
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Chức năng <span class="fa fa-angle-down"></span></a>
+              <c:if test="${not empty sinhvien}">
               <ul class="dropdown-menu" role="menu">
                 <li><a href="hocphi.html">Học phí</a></li>
-                <li><a href="<c:url value = "/course2"/>">Khóa học đang học</a></li>
+                <li><a href="<c:url value ="/course2"/>">Khóa học đang học</a></li>
               </ul>
-              <li><a href="<c:url value = "/profile"/>">Cá nhân</a></li>
-              <li><a href="<c:url value = "/login"/>">Đăng xuất</a></li>
+              </c:if>
+              <c:if test="${not empty giaovien}">
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="hocphi.html">Thêm Khóa Học</a></li>
+                <li><a href="<c:url value ="/course3"/>">Khóa học đang dạy</a></li>
+              </ul>
+              </c:if>
+          	<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Cá Nhân <span class="fa fa-angle-down"></span></a>
+	            <ul class="dropdown-menu" role="menu">
+	             <li><a href="<c:url value ="/profile"/>">Profile </a></li>
+	             <li><a href="<c:url value ="/set-profile"/>">Thay đổi thông tin </a></li> 
+              	 <li><a href="<c:url value ="/profile"/>">Đổi password</a></li>
+              	</ul>
+              </li>
+              <li><a href="<c:url value = "/dang-xuat"/>">Đăng xuất</a></li>
             </li>
             </c:if>
               </ul>               
@@ -193,16 +208,16 @@
        <div class="col-md-12">
          <div class="mu-course-content-area">
             <div class="row">
-              <div class="col-md-9">
+              <div class="col-md-12">
                 <!-- start course content container -->
                 <div class="mu-course-container">
-                  <div class="row">
+                  <div class="row" id="page_khoahoc">
                   <c:forEach items="${listkhoahoc}" var="khoahoc">
                            
                   <div class="col-md-6 col-sm-6">
                     <div class="mu-latest-course-single">
                       <figure class="mu-latest-course-img">
-                        <a href="#"><img src="<c:url value ="${khoahoc.getImg()}"/>" alt="img"></a>
+                        <a href="#"><img src="<c:url value ="${khoahoc.getImg()}"/>" style= "height: 250px" alt="img"></a>
                         <figcaption class="mu-latest-course-imgcaption">
                           <a href="#">${khoahoc.getTen()} </a>
                           <span><i class="fa fa-clock-o"></i>${khoahoc.getThoigian()}</span>
@@ -210,7 +225,7 @@
                       </figure>
                       <div class="mu-latest-course-single-content">
                         <div class="mu-latest-course-single-contbottom">
-                          <a class="mu-course-details" href="course-detail">Details</a>
+                          <a class="mu-course-details" href='<c:url  value="/course-detail/${khoahoc.getId()}"/>'>Details</a>
                           <span class="mu-course-price" href="#">${khoahoc.getChiphi()}</span>
                         </div>
                       </div>
@@ -218,32 +233,27 @@
                   </div>
     
                   </c:forEach>
-                  
+                 </div> 
                 <!-- end course content container -->
                 <!-- start course pagination -->
+               <div class="row">
                 <div class="mu-pagination">
                   <nav>
                     <ul class="pagination">
-                      <li>
-                        <a href="#" aria-label="Previous">
-                          <span class="fa fa-angle-left"></span> Prev 
-                        </a>
-                      </li>
-                      <li class="active"><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li>
-                        <a href="#" aria-label="Next">
-                         Next <span class="fa fa-angle-right"></span>
-                        </a>
-                      </li>
+                      <li><span  class="page_prev"> << </span></li> 
+                       <li ><span  class="page active" id="1">1</span></li>
+                      <c:forEach begin="2" end="${count}" var="x" >
+                        <li><span  class="page" id="${x}">${x}</span></li>
+                      </c:forEach>
+                       
+                      <li><span  class="page_next">>></span></li>  
+                      
                     </ul>
                   </nav>
                 </div>
+               </div> 
                 <!-- end course pagination -->
-              </div>
+              
               
            </div>
          </div>
@@ -343,6 +353,103 @@
 
   <!-- Custom js -->
   <script src="<c:url value ="/file/assets/js/custom.js"/>"></script> 
-
+<script type="text/javascript">
+$(document).ready(function(){
+	var id = ${id};
+		$(".page").click(function(){
+			
+			var page = $(this).text() - 1;
+			var start = page * 6;
+			$(".page").removeClass('active');
+			$(this).addClass('active');
+			$.ajax({
+			  url: "/quanlykhoahoc/course/"+ id +"/phantrang",
+			  method: "GET",
+			  data: { start : start },
+			  success : function(response){
+				  
+				  $("#page_khoahoc").empty();
+				  $("#page_khoahoc").append(response);
+			  	}
+			  	
+			  		
+			});
+		});	
+			
+			$(".page_next").click(function(){
+				var x = $(this).parent().parent().find(".active").text();
+				
+				var size = $(this).parent().parent().find(".page").last().text();
+				if(x == size){
+					var start = (x-1)*6;
+					$.ajax({
+						  url: "/quanlykhoahoc/course/"+ id +"/phantrang",
+						  method: "GET",
+						  data: { start : start },
+						  success : function(response){
+							  $("#page_khoahoc").empty();
+							  $("#page_khoahoc").append(response);
+						  	}
+						  	
+						  		
+						});
+					
+				}else{
+					var start = x*6;
+					var p = parseInt(x) + 1;
+					$(this).parent().parent().find(".page").removeClass('active');
+					$('#'+p+'').addClass('active');
+					$.ajax({
+						  url: "/quanlykhoahoc/course/"+ id +"/phantrang",
+						  method: "GET",
+						  data: { start : start },
+						  success : function(response){
+							  $("#page_khoahoc").empty();
+							  $("#page_khoahoc").append(response);
+						  	}
+						  	
+						  		
+						});
+				}
+				
+			});
+			
+			$(".page_prev").click(function(){
+				var x = $(this).parent().parent().find(".active").text();
+				if(x == 1){
+					var start = (x - 1) * 6;
+					$.ajax({
+					  url: "/quanlykhoahoc/course/"+ id +"/phantrang",
+					  method: "GET",
+					  data: { start : start },
+					  success : function(response){
+						  $("#page_khoahoc").empty();
+						  $("#page_khoahoc").append(response);
+					  	}
+					  	
+					  		
+					});
+				}else{
+					var p = parseInt(x) - 1;
+					$(".page").removeClass('active');
+					$(this).parent().parent().find('#'+p+'').addClass('active');
+					
+					var start = (x - 2) * 6;
+					$.ajax({
+					  url: "/quanlykhoahoc/course/"+ id +"/phantrang",
+					  method: "GET",
+					  data: { start : start },
+					  success : function(response){
+						  $("#page_khoahoc").empty();
+						  $("#page_khoahoc").append(response);
+					  	}
+					  	
+					  		
+					});
+				}
+				
+			});
+});
+</script>
   </body>
 </html>

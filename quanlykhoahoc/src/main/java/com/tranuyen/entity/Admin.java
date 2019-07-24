@@ -26,14 +26,7 @@ public class Admin {
 	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
-	public Admin(int id, String name, String password, String email, Roles roles) {
-		this.id = id;
-		this.email = email;
-		this.name = name;
-		this.password = password; 
-		this.roles = roles;
-		
-	}
+	
 	
 	public String getEmail() {
 		return email;
@@ -63,7 +56,12 @@ public class Admin {
 		this.password = password;
 	}
 	
-	
+	public void setRoles(Roles roles) {
+		this.roles = roles;
+	}
+	public Roles getRoles() {
+		return roles;
+	}
 	
 	
 	

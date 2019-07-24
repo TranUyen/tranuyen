@@ -4,6 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tranuyen.entity.Admin;
+import com.tranuyen.entity.GiaoVien;
+import com.tranuyen.entity.SinhVien;
+
 @Controller
 @RequestMapping(path = {"/","index"})
 public class index {
@@ -12,20 +16,5 @@ public class index {
 	public String home() {
 		return "index";
 	}
-	
-	/*@GetMapping("/dangky")
-	public String Dangky() {
-		return "dangky";
-	}	
-	@GetMapping("/course-detail")
-	public String chitietkhoahoc() {
-		return "course-detail";
-	}*/
-	
-	@GetMapping("/profile")
-	public String canhan() {
-		return "profile";
-	}
-	
 	
 }

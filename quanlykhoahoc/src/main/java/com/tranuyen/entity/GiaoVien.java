@@ -1,11 +1,16 @@
 package com.tranuyen.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,16 +35,8 @@ public class GiaoVien {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GiaoVien(int id, String hoten, String diachi, String sdt, String ngaysinh, String email, String password,
-			Roles roles) {
-		this.id = id;
-		this.hoten = hoten;
-		this.diachi = diachi;
-		this.sdt = sdt;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
+	@OneToMany(mappedBy = "idgiaovien", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<KhoaHoc> listkhoahoc;
 
 	public int getId() {
 		return id;

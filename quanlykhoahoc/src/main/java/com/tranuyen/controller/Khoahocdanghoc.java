@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.tranuyen.entity.SinhVien;
 import com.tranuyen.service.KhoahocdanghocService;
+import com.tranuyen.entity.SinhVien;
 
 @Controller
 @RequestMapping("course2")
@@ -22,8 +22,10 @@ public class Khoahocdanghoc {
 	@GetMapping()
 	public String KhoaHocdanghoc(ModelMap map,HttpSession session) {
 		SinhVien sv = (SinhVien) session.getAttribute("sinhvien");
+		if(sv == null) {
+			return "404";
+		}
 		map.addAttribute("listkhoahoc", khdanghoc.KhoaHocDangHoc(sv.getId()));
-		System.out.println(khdanghoc.KhoaHocDangHoc(sv.getId()).size());
 		return "course";
 	}
 	
